@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Email tab</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+        }
+
+        .conatiner {
+            margin: 10px;
+            position: fixed;
+            width: 100%;
+            display: grid;
+            height: 100%;
+            grid-template-areas:
+                "header header header"
+                "leftside main main"
+            ;
+            text-align: center;
+            gap: 10px;
+        }
+
+        header {
+            grid-area: header;
+            width: 90%;
+            border: 2px solid rgb(248, 244, 244);
+            box-shadow: 0 0 2px #000;
+            margin: 0px auto;
+            border-radius: 5px;
+            position: fixed;
+            left: 5%;
+        }
+
+        main {
+
+            position: relative;
+            top: 14%;
+            border: 2px solid rgb(248, 244, 244);
+            box-shadow: 0 0 2px #000;
+            margin: 0px auto;
+            grid-area: main;
+            border-radius: 20px;
+            width: 100%;
+            padding: 10px;
+
+
+        }
+
+        .rightside {
+            position: relative;
+            top: 14%;
+            grid-area: rightside;
+
+            border: 2px solid rgb(248, 244, 244);
+            box-shadow: 0 0 2px #000;
+            margin: 0px auto;
+            width: 20px;
+            border-radius: 20px;
+
+        }
+
+        .header-tab {
+            display: flex;
+            justify-content: space-around;
+            position: relative;
+
+            padding: 10px;
+            margin: 10px;
+        }
+
+        .tab-boxes {
+            height: 700px;
+
+            border: 1px solid rgb(247, 245, 245);
+
+
+        }
+
+        .box1 {
+
+            height: 100%;
+            background-color: rgb(254, 253, 253);
+            width: 100%;
+            overflow: scroll;
+        }
+
+        .box2 {
+            height: 100%;
+            background-color: rgb(195, 216, 225);
+            width: 100%;
+            overflow: scroll;
+        }
+
+        .box3 {
+            height: 100%;
+            background-color: rgb(254, 253, 253);
+            width: 100%;
+            overflow: scroll;
+            background-color: rgba(159, 239, 239, 0.081);
+        }
+
+        p {
+            background-color: #fff;
+
+            margin: 5px 10px;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: left;
+            border: 1px solid rgb(239, 234, 234);
+            box-shadow: 0 0 3px #070707b9;
+        }
+
+        button {
+            all: unset;
+            color: black;
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        button:hover {
+            all: unset;
+            color: black;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgb(10, 134, 216);
+        }
+
+        header {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 5px;
+
+        }
+
+        .header-box1 {
+            width: 200px;
+            /* border: 1px solid black; */
+            /* padding: 10px; */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-box2 {
+            height: 40px;
+            width: 600px;
+            /* border: 1px solid black; */
+            border-radius: 10px;
+            background-color: aliceblue;
+            box-shadow: 0 0 4px #00000043;
+            display: flex;
+            align-items: center;
+        }
+
+        .header-box3 {
+            width: 300px;
+            /* border: 1px solid black; */
+            padding: 10px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding-left: 100px;
+        }
+
+
+        .glyphicon-menu-hamburger {
+            font-size: 28px;
+            padding: 5px;
+            border-radius: 4px;
+            /* box-shadow: 0 0 4px #00000060; */
+        }
+
+        .Gmail {
+            font-size: 28px;
+            color: #00000091;
+        }
+
+        input {
+            width: 90%;
+            outline: none;
+            border: none;
+            font-size: 16px;
+            padding: 5px;
+            background-color: aliceblue;
+        }
+
+        i {
+            font-size: 20px;
+        }
+
+        #leftside {
+            position: relative;
+            top: 14%;
+            grid-area: leftside;
+            border: 2px solid rgb(248, 244, 244);
+            box-shadow: 0 0 2px #000;
+            margin: 0px auto;
+            width: 60px;
+            border-radius: 20px;
+            overflow: hidden;
+            overflow: scroll;
+        }
+
+
+        #leftside:hover {
+
+            width: 200px;
+
+        }
+
+
+        .scroll-left {
+            width: 150px;
+            text-align: left;
+
+            margin: 10px;
+        }
+
+        .menu-item {
+            padding: 10px;
+            border: 2px solid #16161627;
+            border-radius: 20px;
+            margin-top: 10px;
+        }
+
+        .menu-item i {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="conatiner">
+        <header>
+            <li>
+                <div class="header-box1">
+
+                    <span class="glyphicon glyphicon-menu-hamburger" onclick="slide()"></span>
+                    <img src="./gamil.jpeg" alt="" height="40px" width="60px"
+                        style="box-shadow: 0 0 4px #0000005f; border-radius: 4px;">
+                    <span class="Gmail">Gmail</span>
+                </div>
+            </li>
+            <li>
+                <div class="header-box2">
+                    <input type="text">
+                    <i class="fa fa-search" style="font-size:20px"></i>
+                </div>
+            </li>
+            <li>
+                <div class="header-box3">
+                    <i class="fa fa-question" style="border: 1px solid black; padding: 5px; border-radius: 50%;"></i>
+                    <i class="fa fa-star-o"></i>
+                    <i class="glyphicon glyphicon-cog"></i>
+                    <i class="fa fa-th" aria-hidden="true"></i>
+                    <img src="./WhatsApp Image 2023-12-12 at 16.55.22_09cdec4d.jpg" alt=""
+                        style="height: 50px; width: 40px; border-radius: 50%;">
+
+
+                </div>
+            </li>
+        </header>
+        <style>
+
+        </style>
+
+        <aside id="leftside">
+            <div class="scroll-left">
+                <div class="menu-item">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                    <span>compose</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa-solid fa-image"></i>
+                    <span>inbox</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa fa-star-o"></i>
+                    <span>starred</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa fa-clock-o" aria-hidden="true"></i>
+                    <span>snoozed</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                    <span>chat</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa-solid fa-envelopes-bulk"></i>
+                    <span>all mail</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    <span>trash</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa fa-folder-o" aria-hidden="true"></i>
+                    <span>folders</span>
+                </div>
+                <div class="menu-item">
+                    <i class="fa fa-cog" aria-hidden="true"></i>
+                    <span>settings</span>
+                </div>
+            </div>
+        </aside>
+
+        <script>
+
+        </script>
+        <main>
+            <header class="header-tab">
+                <button onclick="tab1()">Promotions</button><button onclick="tab2()">social</button><button
+                    onclick="tab3()">update</button>
+                <button onclick="tab2()">Forums</button>
+            </header>
+            <div class="tab-boxes">
+                <div class="box1" id="box1">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                </div>
+                <div class="box2" id="box2">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                </div>
+                <div class="box3" id="box3">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur sint at natus explicabo
+                        ipsum! Exercitationem, sequi quaerat! Totam quidem, nostrum repellendus eaque, illo doloremque
+                        similique possimus explicabo, perspiciatis magnam amet!</p>
+                </div>
+            </div>
+
+
+        </main>
+        <aside class="rightside">rightside</aside>
+    </div>
+
+    <script>
+        function slide() {
+            let slidebar = document.getElementById('leftside');
+            let left = slidebar.style.width
+            if (left === "200px") {
+                slidebar.style.width = "60px"
+                setTimeout(function () {
+                    location.reload(); 
+                }, 1000);
+            }
+
+            else {
+                slidebar.style.width = "200px"
+            }
+        }
+        function tab1() {
+            document.getElementById("box1").style.display = "block";
+            document.getElementById("box2").style.display = "none";
+            document.getElementById("box3").style.display = "none";
+        }
+        function tab2() {
+            document.getElementById("box1").style.display = "none";
+            document.getElementById("box2").style.display = "block";
+            document.getElementById("box3").style.display = "none";
+        }
+        function tab3() {
+            document.getElementById("box1").style.display = "none";
+            document.getElementById("box2").style.display = "none";
+            document.getElementById("box3").style.display = "block";
+        }
+        function onload() {
+            tab1();
+        }
+        tab1();
+    </script>
+</body>
+
+</html>
